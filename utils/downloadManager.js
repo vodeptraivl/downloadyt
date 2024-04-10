@@ -51,9 +51,9 @@ const download = async (
       };
     }
     if(settings.playlistStart <= settings.playlistEnd) {
-      console.log(`Đang tải index : ${settings.playlistStart} - url : ${url}.`)
+      console.log(`Đang tải index : ${settings.playlistStart} -> ${settings.playlistEnd}.`)
       await youtubedl(url, settings, { cwd: downloadsFolderPath });
-      console.log(`xong index : ${settings.playlistStart} - url : ${url}.`)
+      console.log(`xong index : ${settings.playlistStart} -> ${settings.playlistEnd}.`)
     }
   } catch (error) {
     console.log(error);
