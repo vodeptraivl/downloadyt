@@ -82,7 +82,7 @@ const renametoMp3 = (path) => {
     let name = filesNames[i].replace(".webm",".mp3").replace(".m4a",".mp3");
     console.log(name);
     fs.renameSync(
-        __dirname + path + filesNames[i],
-        __dirname + path + name )
-}
+        path + filesNames[i],
+        path + name )
+  }
 }
