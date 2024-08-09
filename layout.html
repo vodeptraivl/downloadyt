@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eudy</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                padding: 0;
+                display: block;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            * {
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+            .container{
+                position: relative;
+                display: block;
+                height: 200px;
+            }
+            .headTitle{
+                width: 100%;
+                height: 30px;
+                display: flex;
+                position: relative;
+                background: linear-gradient(90deg, rgba(2, 0, 36, 0.6) 0%, rgba(9, 9, 121, 0.6) 35%, rgba(0, 212, 255, 0.6) 100%);
+                z-index: 9999;
+            }
+            .titleHContent{
+                font-weight: 600;
+                left: 0;
+                position: absolute;
+                font-size: 17px;
+                line-height: 30px;
+                color: white;
+                font-family: fantasy;
+                padding-left: 10px;
+                width: calc(100% - 40px);
+                -webkit-app-region: drag;
+            }
+            .closeApp{
+                font-size: 20px;
+                height: 30px;
+                width: 40px;
+                background: #CE2029;
+                color: white;
+                font-weight: 500;
+                line-height: 30px;
+                letter-spacing: 5px;
+                position: absolute;
+                right: 0;
+                text-align: center;
+                cursor: pointer;
+            }
+            .containerH{
+                background-image: linear-gradient(-225deg, #ffffffd1 0%, #d7fffec4 100%);
+                height: calc(100% - 30px);
+                position: absolute;
+                top: 30px;
+                width: 100%;
+            }
+
+                     
+         .btn-grad {
+            background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+          :root{
+                --timing: 100ms;
+                --jump-height: 35px;
+                --loading-bg-color:rgb(46, 78, 119);
+                --dot-width: 35px;
+                --dot-height: 35px;
+                --dot-1-color: transparent;
+                --dot-2-color: transparent;
+                --dot-3-color: transparent;
+                --dot-4-color: transparent;
+                --font-color-loading:rgb(208 207 207);
+                --font-size-loading:35px;
+                --font-family-loading:"Inter", Shadows Into Light;
+
+            }
+
+            * {
+                -webkit-tap-highretro-color: transparent;
+            }
+            
+            *:focus {
+                outline: none;
+            }
+
+            /*loading*/
+
+            .loading-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to top, #48c6efcf 0%, #6f86d6d6 100%);
+                display: flex;
+                flex-direction: column; 
+                align-items: center;
+                justify-content: center;
+                z-index: 999; 
+            }
+            
+
+
+            .loading-dots{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .dot-1,
+            .dot-2,
+            .dot-3,
+            .dot-4,
+            .dot-5{
+                position: relative;
+                content: '';
+                height: var(--dot-height);
+                width: var(--dot-width);
+                border-radius: 50%;
+                filter: drop-shadow(0px 2px 2px rgba(255, 255, 255, 0.521))
+                drop-shadow(0px 3px .1px rgba(0, 0, 0, 0.3));
+                
+                animation: jumping-dots 2s cubic-bezier(0.55, 1.55, 0.55, 1.55) infinite;
+                
+                transition: var(--timing);
+            }
+
+            .dot-1::before,
+            .dot-2::before,
+            .dot-3::before,
+            .dot-4::before,
+            .dot-5::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: transparent;
+                border-radius: 50%;  
+                font-weight: 800;
+                font-size: var(--font-size-loading);
+                font-family: var(--font-family-loading);
+                color: var(--font-color-loading);
+                animation: jumping-dots 2s cubic-bezier(0.55, 1.55, 0.55, 1.55) infinite;
+            }
+
+            .dot-1::before{
+                content: 'E';
+            }
+
+            .dot-2::before{
+                content: 'U';
+                animation-delay: .20s;
+            }
+
+            .dot-3::before{
+                content: 'D';
+                animation-delay: .40s;
+            }
+
+            .dot-4::before{
+                content: 'Y';
+                animation-delay: .60s;
+            }
+
+            .dot-1{
+                background-color: var(--dot-1-color);
+            }
+
+            .dot-2{
+                background-color: var(--dot-2-color);
+                animation-delay: .20s;
+            }
+
+            .dot-3{
+                background-color: var(--dot-3-color);
+                animation-delay: .40s;
+            }
+
+            .dot-4{
+                background-color: var(--dot-4-color);
+                animation-delay: .60s;
+            }
+
+
+            @keyframes jumping-dots {
+            0%,25%{
+                transform: translateY(var(--jump-height));
+                color: transparent;
+            }
+            50%,75%{
+                transform: translateY(0);   
+            }
+            100% {
+                transform: translateY(0); 
+
+            }
+            }
+            .extBtn {
+                height: 50px;
+                width: 90px;
+                font-size: 20px;
+                border: none;
+                box-shadow: 1px 1px 5px #cecece;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="headTitle">
+                <div class="titleHContent">Eudy</div>
+                <div class="closeApp" id="closeQuit">&#10006;</div>
+                <!-- <button class="closeApp" onclick="closeWindow()">&#10006;</button> -->
+            </div>
+            <div class="containerH">
+                <div id="loading" style="display: none;" class="loading-overlay">
+                    <div class="loading-dots"> 
+                      <div class="dot-1"></div>
+                      <div class="dot-2"></div>
+                      <div class="dot-3"></div>
+                      <div class="dot-4"></div>
+                    </div>
+                  </div>
+                <div id="log1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50% , -50%); padding: 20px; background: white; display: block; border-radius: 3px; box-shadow: 1px 1px 5px #cecece;">
+                    <div style="margin-bottom: 5px; font-size: 12px; color: #545050;">Link Youtube :</div>
+                    <input id="linkUt" type="text" 
+                    placeholder="link here ..." 
+                    style="height: 25px; border: 1px solid #eeeeee; border-radius: 3px;width: 300px;outline: none;padding-left: 10px;"
+                    value="https://www.youtube.com/watch?v=Oextk-If8HQ"
+                    >
+                    <div id="errorMess" style="color: rgb(244, 73, 73); font-size: 12px; display: none; padding: 5px;">invalid link</div>
+                    <div style="width: 100%; margin-top: 5px;text-align: center;">
+                        <button id="download" onclick="checkDownload()" class="btn-grad" style="height: 25px; border: none; ">Download</button>
+                    </div>
+                </div>
+                <div id="log2" style="display: none;position: absolute; top: 50%; left: 50%; transform: translate(-50% , -50%); padding: 20px; background: white; border-radius: 3px; box-shadow: 1px 1px 5px #cecece;">
+                    <button onclick="downloadOutput('mp3')" class="btn-grad extBtn" style="margin-right: 15px;">MP3</button>
+                    <button onclick="downloadOutput('mp4')" class="btn-grad extBtn">MP4</button>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $("#closeQuit").on("click",function(){
+                ipcRender.send('closeWindow', 'close');
+            });
+
+            let link = 'https://www.youtube.com/watch?v=cbk49YCYc28&list=PLHwNe3-WwWYrlHqVNGkONLbBsRRIpyXkD';
+            let readyInfo;
+            function checkDownload(){
+                $('#dowload').attr('disabled', true);
+                $('#loading').removeAttr('style');
+                let link = $('#linkUt').val();
+                if(!isValidYoutubeLink(link)) {
+                    setError();
+                    return;
+                };
+                $('#linkUt').attr('disabled', true);
+                ipcRender.send('checkLink', link);
+                
+            }
+
+            function isValidYoutubeLink(link) {
+                const youtubeRegex = /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/
+                return youtubeRegex.test(link);
+            }
+
+            ipcRender.receive('readyDownload',list =>{
+                console.log(list)
+                if(list.error){
+                    setError();
+                    window.alert(list.message);
+                    return;
+                }
+                $('#loading,#log1').css('display','none');
+                $('#log2').css('display', 'block');
+                url = list.url;
+                readyInfo = list;
+            })
+
+            function downloadOutput(output){
+                readyInfo['output'] = output;
+                ipcRender.send('download', readyInfo);
+                $('#loading').removeAttr('style');
+            }
+
+            function setError(){
+                $('#dowload').attr('disabled', false);
+                $('#loading').css('display','none');
+                $('#errorMess').css('display', 'block');
+                setTimeout(()=>{$('#errorMess').css('display', 'none');},2000);  
+            }
+
+            ipcRender.receive('cancelDownload',list => {
+                back();
+            })
+
+            ipcRender.receive('doneDownload',list => {
+                back();
+                window.alert('done !')
+            })
+
+            function back(){
+                $('#loading,#log2').css('display','none');
+                $('#log1').css('display', 'block');
+                $('#linkUt').removeAttr('disabled');
+                $('#linkUt').val('');
+            }
+
+            ipcRender.receive('error',error => {
+                console.log(error)
+            })
+        </script>
+    </body>
+</html>
